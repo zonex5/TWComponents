@@ -1,0 +1,22 @@
+﻿<Window x:Class="DrawerComponent.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DrawerComponent"
+        xmlns:components="clr-namespace:DrawerComponent.Components"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <components:Drawer x:Name="MyDrawer" CollapsedWidth="65" ExpandedWidth="150">
+            <Button>test</Button>
+        </components:Drawer>
+
+        <Button Grid.Column="1" Width="70" Height="30" Content="Draw" Click="ButtonBase_OnClick" Command="{Binding ToggleMenuCommand}" />
+    </Grid>
+</Window>
