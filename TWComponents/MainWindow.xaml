@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>
 
         <drawer:TwDrawer x:Name="MyDrawer" CollapsedWidth="65" ExpandedWidth="150">
-            <hamburger:TwHamburger Click="TwHamburgerButton_OnClick" Foreground="LightGray" FontSize="10"/>
+            <hamburger:TwHamburger Click="TwHamburgerButton_OnClick" Foreground="LightGray" FontSize="16" IconChar="&#xE706;" />
         </drawer:TwDrawer>
 
         <Button Grid.Column="1" Width="70" Height="30" Content="Draw" Click="ButtonBase_OnClick" Command="{Binding ToggleMenuCommand}" />
