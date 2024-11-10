@@ -5,22 +5,22 @@ using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Windows.Media.Animation;
 
-namespace DrawerComponent.Components
+namespace DrawerComponent.Components.Drawer
 {
     [ContentProperty(nameof(MenuContent))]
-    public partial class Drawer : UserControl
+    public partial class TwDrawer : UserControl
     {
         private DrawerViewModel ViewModel { get; }
 
         public static readonly DependencyProperty MenuContentProperty =
-            DependencyProperty.Register(nameof(MenuContent), typeof(UIElement), typeof(Drawer), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(MenuContent), typeof(UIElement), typeof(TwDrawer), new PropertyMetadata(null));
 
         public static readonly DependencyProperty ExpandedWidthProperty =
-            DependencyProperty.Register(nameof(ExpandedWidth), typeof(int), typeof(Drawer),
+            DependencyProperty.Register(nameof(ExpandedWidth), typeof(int), typeof(TwDrawer),
                 new PropertyMetadata(DrawerViewModel.DefaultExpandedWidth, OnExpandedWidthChanged));
 
         public static readonly DependencyProperty CollapsedWidthProperty =
-            DependencyProperty.Register(nameof(CollapsedWidth), typeof(int), typeof(Drawer),
+            DependencyProperty.Register(nameof(CollapsedWidth), typeof(int), typeof(TwDrawer),
                 new PropertyMetadata(DrawerViewModel.DefaultCollapsedWidth, OnCollapsedWidthChanged));
 
         public UIElement MenuContent
@@ -41,7 +41,7 @@ namespace DrawerComponent.Components
             set => SetValue(ExpandedWidthProperty, value);
         }
 
-        public Drawer()
+        public TwDrawer()
         {
             InitializeComponent();
             ViewModel = new DrawerViewModel();
@@ -51,7 +51,7 @@ namespace DrawerComponent.Components
 
         private static void OnExpandedWidthChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (!(d is Drawer drawer) || drawer.ViewModel == null) return;
+            if (!(d is TwDrawer drawer) || drawer.ViewModel == null) return;
 
             drawer.ViewModel.ExpandedWidth = (int)e.NewValue;
             if (!drawer.ViewModel.IsCollapsed)
@@ -62,7 +62,7 @@ namespace DrawerComponent.Components
 
         private static void OnCollapsedWidthChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (!(d is Drawer drawer) || drawer.ViewModel == null) return;
+            if (!(d is TwDrawer drawer) || drawer.ViewModel == null) return;
 
             drawer.ViewModel.CollapsedWidth = (int)e.NewValue;
             if (drawer.ViewModel.IsCollapsed)

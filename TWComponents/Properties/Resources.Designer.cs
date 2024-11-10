@@ -42,7 +42,7 @@ namespace DrawerComponent.Properties
                 if ((resourceMan == null))
                 {
                     global::System.Resources.ResourceManager temp =
-                        new global::System.Resources.ResourceManager("DrawerComponent.Properties.Resources", typeof(Resources).Assembly);
+                        new global::System.Resources.ResourceManager("TWComponents.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
 

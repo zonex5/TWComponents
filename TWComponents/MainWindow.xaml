@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DrawerComponent"
-        xmlns:components="clr-namespace:DrawerComponent.Components"
+        xmlns:drawer="clr-namespace:DrawerComponent.Components.Drawer"
+        xmlns:hamburger="clr-namespace:DrawerComponent.Components.Hamburger"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
@@ -13,9 +13,9 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <components:Drawer x:Name="MyDrawer" CollapsedWidth="65" ExpandedWidth="150">
-            <Button>test</Button>
-        </components:Drawer>
+        <drawer:TwDrawer x:Name="MyDrawer" CollapsedWidth="65" ExpandedWidth="150">
+            <hamburger:TwHamburger Click="TwHamburgerButton_OnClick" Foreground="LightGray" FontSize="10"/>
+        </drawer:TwDrawer>
 
         <Button Grid.Column="1" Width="70" Height="30" Content="Draw" Click="ButtonBase_OnClick" Command="{Binding ToggleMenuCommand}" />
     </Grid>

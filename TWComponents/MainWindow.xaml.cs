@@ -13,5 +13,10 @@ namespace DrawerComponent
         {
             MyDrawer.Toggle();
         }
+
+        private void TwHamburgerButton_OnClick()
+        {
+            //MessageBox.Show("Hamburger");
+        }
     }
 }
