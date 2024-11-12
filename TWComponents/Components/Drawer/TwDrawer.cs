@@ -9,13 +9,13 @@ using System.Windows.Media.Animation;
 
 namespace DrawerComponent.Components.Drawer
 {
-    [ContentProperty(nameof(MenuContent))]
+    [ContentProperty(nameof(DrawerContent))]
     public class TwDrawer : UserControl
     {
         private DrawerViewModel ViewModel { get; }
 
-        public static readonly DependencyProperty MenuContentProperty =
-            DependencyProperty.Register(nameof(MenuContent), typeof(UIElement), typeof(TwDrawer), new PropertyMetadata(null));
+        public static readonly DependencyProperty DrawerContentProperty =
+            DependencyProperty.Register(nameof(DrawerContent), typeof(UIElement), typeof(TwDrawer), new PropertyMetadata(null));
 
         public static readonly DependencyProperty ExpandedWidthProperty =
             DependencyProperty.Register(nameof(ExpandedWidth), typeof(int), typeof(TwDrawer),
@@ -25,10 +25,10 @@ namespace DrawerComponent.Components.Drawer
             DependencyProperty.Register(nameof(CollapsedWidth), typeof(int), typeof(TwDrawer),
                 new PropertyMetadata(DrawerViewModel.DefaultCollapsedWidth, OnCollapsedWidthChanged));
 
-        public UIElement MenuContent
+        public UIElement DrawerContent
         {
-            get => (UIElement)GetValue(MenuContentProperty);
-            set => SetValue(MenuContentProperty, value);
+            get => (UIElement)GetValue(DrawerContentProperty);
+            set => SetValue(DrawerContentProperty, value);
         }
 
         public int CollapsedWidth
@@ -43,10 +43,7 @@ namespace DrawerComponent.Components.Drawer
             set => SetValue(ExpandedWidthProperty, value);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        private StackPanel MenuPanelControl;
+        private StackPanel _menuPanelControl;
 
         public TwDrawer()
         {
@@ -60,7 +57,7 @@ namespace DrawerComponent.Components.Drawer
         {
             // Создание стиля для StackPanel
             var stackPanelStyle = new Style(typeof(StackPanel));
-            stackPanelStyle.Setters.Add(new Setter(WidthProperty, new Binding("MenuWidth")));
+            stackPanelStyle.Setters.Add(new Setter(WidthProperty, new Binding(nameof(ViewModel.DrawerWidth))));
 
             // Добавление стиля в ресурсы UserControl
             Resources.Add(typeof(StackPanel), stackPanelStyle);
@@ -69,24 +66,24 @@ namespace DrawerComponent.Components.Drawer
             var grid = new Grid();
 
             // Создание StackPanel
-            MenuPanelControl = new StackPanel
+            _menuPanelControl = new StackPanel
             {
                 Background = Brushes.Transparent
             };
 
             // Создание ContentPresenter
             var contentPresenter = new ContentPresenter();
-            var binding = new Binding("MenuContent")
+            var binding = new Binding(nameof(DrawerContent))
             {
                 RelativeSource = new RelativeSource(RelativeSourceMode.FindAncestor, typeof(UserControl), 1)
             };
             contentPresenter.SetBinding(ContentPresenter.ContentProperty, binding);
 
             // Добавление ContentPresenter в StackPanel
-            MenuPanelControl.Children.Add(contentPresenter);
+            _menuPanelControl.Children.Add(contentPresenter);
 
             // Добавление StackPanel в Grid
-            grid.Children.Add(MenuPanelControl);
+            grid.Children.Add(_menuPanelControl);
 
             // Установка корневого элемента UserControl
             Content = grid;
@@ -127,15 +124,15 @@ namespace DrawerComponent.Components.Drawer
 
         private void AnimateMenuWidth(int toWidth)
         {
-            int fromWidth = (int)MenuPanelControl.ActualWidth;
+            int fromWidth = (int)_menuPanelControl.ActualWidth;
             var animation = new DoubleAnimation
             {
                 From = fromWidth,
                 To = toWidth,
-                Duration = TimeSpan.FromSeconds(0.3),
+                Duration = TimeSpan.FromSeconds(2),
                 EasingFunction = new QuadraticEase()
             };
-            MenuPanelControl.BeginAnimation(WidthProperty, animation);
+            _menuPanelControl.BeginAnimation(WidthProperty, animation);
         }
 
         public void Toggle()

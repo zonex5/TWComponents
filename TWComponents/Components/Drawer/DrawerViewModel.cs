@@ -27,7 +27,7 @@ namespace DrawerComponent.Components.Drawer
                 if (_collapsedWidth == value) return;
                 _collapsedWidth = value;
                 OnPropertyChanged();
-                OnPropertyChanged(nameof(MenuWidth));
+                OnPropertyChanged(nameof(DrawerWidth));
             }
         }
 
@@ -39,7 +39,7 @@ namespace DrawerComponent.Components.Drawer
                 if (_expandedWidth == value) return;
                 _expandedWidth = value;
                 OnPropertyChanged();
-                OnPropertyChanged(nameof(MenuWidth));
+                OnPropertyChanged(nameof(DrawerWidth));
             }
         }
 
@@ -51,11 +51,11 @@ namespace DrawerComponent.Components.Drawer
                 if (_isCollapsed == value) return;
                 _isCollapsed = value;
                 OnPropertyChanged();
-                OnPropertyChanged(nameof(MenuWidth));
+                OnPropertyChanged(nameof(DrawerWidth));
             }
         }
 
-        public int MenuWidth => IsCollapsed ? CollapsedWidth : ExpandedWidth;
+        public int DrawerWidth => IsCollapsed ? CollapsedWidth : ExpandedWidth;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
