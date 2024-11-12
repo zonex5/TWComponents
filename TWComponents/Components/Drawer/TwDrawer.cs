@@ -2,13 +2,15 @@
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Markup;
+using System.Windows.Media;
 using System.Windows.Media.Animation;
 
 namespace DrawerComponent.Components.Drawer
 {
     [ContentProperty(nameof(MenuContent))]
-    public partial class TwDrawer : UserControl
+    public class TwDrawer : UserControl
     {
         private DrawerViewModel ViewModel { get; }
 
@@ -41,12 +43,56 @@ namespace DrawerComponent.Components.Drawer
             set => SetValue(ExpandedWidthProperty, value);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private StackPanel MenuPanelControl;
+
         public TwDrawer()
         {
             InitializeComponent();
             ViewModel = new DrawerViewModel();
             DataContext = ViewModel;
             ViewModel.PropertyChanged += ViewModel_PropertyChanged;
+        }
+
+        private void InitializeComponent()
+        {
+            // Создание стиля для StackPanel
+            var stackPanelStyle = new Style(typeof(StackPanel));
+            stackPanelStyle.Setters.Add(new Setter(WidthProperty, new Binding("MenuWidth")));
+
+            // Добавление стиля в ресурсы UserControl
+            Resources.Add(typeof(StackPanel), stackPanelStyle);
+
+            // Создание Grid, содержащего StackPanel
+            var grid = new Grid();
+
+            // Создание StackPanel
+            MenuPanelControl = new StackPanel
+            {
+                Background = Brushes.Transparent
+            };
+
+            // Создание ContentPresenter
+            var contentPresenter = new ContentPresenter();
+            var binding = new Binding("MenuContent")
+            {
+                RelativeSource = new RelativeSource(RelativeSourceMode.FindAncestor, typeof(UserControl), 1)
+            };
+            contentPresenter.SetBinding(ContentPresenter.ContentProperty, binding);
+
+            // Добавление ContentPresenter в StackPanel
+            MenuPanelControl.Children.Add(contentPresenter);
+
+            // Добавление StackPanel в Grid
+            grid.Children.Add(MenuPanelControl);
+
+            // Установка корневого элемента UserControl
+            Content = grid;
+
+            // Установка фона UserControl
+            Background = new SolidColorBrush(Color.FromRgb(60, 74, 85));
         }
 
         private static void OnExpandedWidthChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
