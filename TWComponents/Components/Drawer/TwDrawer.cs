@@ -12,6 +12,8 @@ namespace DrawerComponent.Components.Drawer
     [ContentProperty(nameof(DrawerContent))]
     public class TwDrawer : UserControl
     {
+        public bool IsCollapsed => ViewModel != null && ViewModel.IsCollapsed;
+
         private DrawerViewModel ViewModel { get; }
 
         public static readonly DependencyProperty DrawerContentProperty =
@@ -131,8 +133,8 @@ namespace DrawerComponent.Components.Drawer
             {
                 From = fromWidth,
                 To = toWidth,
-                Duration = TimeSpan.FromSeconds(1),
-                EasingFunction = new QuadraticEase() // Используем плавное изменение
+                Duration = TimeSpan.FromSeconds(0.3),
+                EasingFunction = new QuadraticEase() 
             };
 
             // Создание Storyboard
