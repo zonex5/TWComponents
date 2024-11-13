@@ -17,13 +17,11 @@ namespace DrawerComponent.Components.Drawer
         public static readonly DependencyProperty DrawerContentProperty =
             DependencyProperty.Register(nameof(DrawerContent), typeof(UIElement), typeof(TwDrawer), new PropertyMetadata(null));
 
-        public static readonly DependencyProperty ExpandedWidthProperty =
-            DependencyProperty.Register(nameof(ExpandedWidth), typeof(int), typeof(TwDrawer),
-                new PropertyMetadata(DrawerViewModel.DefaultExpandedWidth, OnExpandedWidthChanged));
+        public static readonly DependencyProperty ExpandedWidthProperty = DependencyProperty.Register(nameof(ExpandedWidth), typeof(int), typeof(TwDrawer),
+            new PropertyMetadata(DrawerViewModel.DefaultExpandedWidth, OnExpandedWidthChanged));
 
-        public static readonly DependencyProperty CollapsedWidthProperty =
-            DependencyProperty.Register(nameof(CollapsedWidth), typeof(int), typeof(TwDrawer),
-                new PropertyMetadata(DrawerViewModel.DefaultCollapsedWidth, OnCollapsedWidthChanged));
+        public static readonly DependencyProperty CollapsedWidthProperty = DependencyProperty.Register(nameof(CollapsedWidth), typeof(int), typeof(TwDrawer),
+            new PropertyMetadata(DrawerViewModel.DefaultCollapsedWidth, OnCollapsedWidthChanged));
 
         public UIElement DrawerContent
         {
@@ -94,23 +92,25 @@ namespace DrawerComponent.Components.Drawer
 
         private static void OnExpandedWidthChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (!(d is TwDrawer drawer) || drawer.ViewModel == null) return;
-
-            drawer.ViewModel.ExpandedWidth = (int)e.NewValue;
-            if (!drawer.ViewModel.IsCollapsed)
+            if (d is TwDrawer drawer && drawer.ViewModel != null)
             {
-                drawer.AnimateMenuWidth(drawer.ViewModel.ExpandedWidth);
+                drawer.ViewModel.ExpandedWidth = (int)e.NewValue;
+                if (!drawer.ViewModel.IsCollapsed)
+                {
+                    drawer.AnimateMenuWidth(drawer.ViewModel.ExpandedWidth);
+                }
             }
         }
 
         private static void OnCollapsedWidthChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (!(d is TwDrawer drawer) || drawer.ViewModel == null) return;
-
-            drawer.ViewModel.CollapsedWidth = (int)e.NewValue;
-            if (drawer.ViewModel.IsCollapsed)
+            if (d is TwDrawer drawer && drawer.ViewModel != null)
             {
-                drawer.AnimateMenuWidth(drawer.ViewModel.CollapsedWidth);
+                drawer.ViewModel.CollapsedWidth = (int)e.NewValue;
+                if (drawer.ViewModel.IsCollapsed)
+                {
+                    drawer.AnimateMenuWidth(drawer.ViewModel.CollapsedWidth);
+                }
             }
         }
 
@@ -124,15 +124,27 @@ namespace DrawerComponent.Components.Drawer
 
         private void AnimateMenuWidth(int toWidth)
         {
-            int fromWidth = (int)_menuPanelControl.ActualWidth;
-            var animation = new DoubleAnimation
+            double fromWidth = _menuPanelControl.ActualWidth;
+
+            // Создание анимации ширины
+            var widthAnimation = new DoubleAnimation
             {
                 From = fromWidth,
                 To = toWidth,
-                Duration = TimeSpan.FromSeconds(2),
-                EasingFunction = new QuadraticEase()
+                Duration = TimeSpan.FromSeconds(1),
+                EasingFunction = new QuadraticEase() // Используем плавное изменение
             };
-            _menuPanelControl.BeginAnimation(WidthProperty, animation);
+
+            // Создание Storyboard
+            var storyboard = new Storyboard();
+            storyboard.Children.Add(widthAnimation);
+
+            // Установка цели анимации
+            Storyboard.SetTarget(widthAnimation, _menuPanelControl);
+            Storyboard.SetTargetProperty(widthAnimation, new PropertyPath(WidthProperty));
+
+            // Запуск анимации
+            storyboard.Begin();
         }
 
         public void Toggle()
