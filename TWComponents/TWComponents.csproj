@@ -54,6 +54,7 @@
         </ApplicationDefinition>  -->
         <Page Include="Components\Hamburger\HambergerStyle.xaml" />
         <Page Include="Components\Hamburger\TwHamburger.xaml" />
+        <Page Include="Components\WindowControls\WindowControls.xaml" />
         <Page Include="MainWindow.xaml">
             <Generator>MSBuild:Compile</Generator>
             <SubType>Designer</SubType>
@@ -66,6 +67,9 @@
         <Compile Include="Components\Drawer\TwDrawer.cs" />
         <Compile Include="Components\Hamburger\TwHamburger.xaml.cs">
           <DependentUpon>TwHamburger.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="Components\WindowControls\WindowControls.xaml.cs">
+          <DependentUpon>WindowControls.xaml</DependentUpon>
         </Compile>
         <Compile Include="MainWindow.xaml.cs">
             <DependentUpon>MainWindow.xaml</DependentUpon>
