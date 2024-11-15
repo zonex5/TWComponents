@@ -43,7 +43,7 @@ namespace DrawerComponent.Components.Drawer
             set => SetValue(ExpandedWidthProperty, value);
         }
 
-        private StackPanel _menuPanelControl;
+        private Border _menuPanelControl;
 
         public TwDrawer()
         {
@@ -62,11 +62,8 @@ namespace DrawerComponent.Components.Drawer
             // Добавление стиля в ресурсы UserControl
             Resources.Add(typeof(StackPanel), stackPanelStyle);
 
-            // Создание Grid, содержащего StackPanel
-            var grid = new Grid();
-
             // Создание StackPanel
-            _menuPanelControl = new StackPanel
+            _menuPanelControl = new Border
             {
                 Background = Brushes.Transparent
             };
@@ -80,13 +77,10 @@ namespace DrawerComponent.Components.Drawer
             contentPresenter.SetBinding(ContentPresenter.ContentProperty, binding);
 
             // Добавление ContentPresenter в StackPanel
-            _menuPanelControl.Children.Add(contentPresenter);
-
-            // Добавление StackPanel в Grid
-            grid.Children.Add(_menuPanelControl);
+            _menuPanelControl.Child = contentPresenter;
 
             // Установка корневого элемента UserControl
-            Content = grid;
+            Content = _menuPanelControl;
 
             // Установка фона UserControl
             Background = new SolidColorBrush(Color.FromRgb(60, 74, 85));
