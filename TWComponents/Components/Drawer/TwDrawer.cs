@@ -128,7 +128,7 @@ namespace DrawerComponent.Components.Drawer
                 From = fromWidth,
                 To = toWidth,
                 Duration = TimeSpan.FromSeconds(0.3),
-                EasingFunction = new QuadraticEase() 
+                EasingFunction = new QuadraticEase()
             };
 
             // Создание Storyboard
@@ -143,9 +143,16 @@ namespace DrawerComponent.Components.Drawer
             storyboard.Begin();
         }
 
-        public void Toggle()
+        public void Toggle(bool? value = null)
         {
-            ViewModel.IsCollapsed = !ViewModel.IsCollapsed;
+            if (value.HasValue)
+            {
+                ViewModel.IsCollapsed = value.Value;
+            }
+            else
+            {
+                ViewModel.IsCollapsed = !ViewModel.IsCollapsed;
+            }
         }
     }
 }
