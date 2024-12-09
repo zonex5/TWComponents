@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
 
-namespace DrawerComponent.Components.Hamburger
+namespace TwComponents.Components.Hamburger
 {
     public partial class TwHamburger : UserControl
     {

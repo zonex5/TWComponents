@@ -1,4 +1,4 @@
-namespace DrawerComponent.Models
+namespace TwComponents.Models
 {
     public class ColorModel
     {

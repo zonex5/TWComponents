@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace DrawerComponent.Components.Drawer
+namespace TwComponents.Components.Drawer
 {
     public class DrawerViewModel : INotifyPropertyChanged
     {

@@ -1,4 +1,4 @@
-﻿namespace DrawerComponent.Components.Notification
+﻿namespace TwComponents.Components.Notification
 {
     public partial class TwNotificationBox
     {

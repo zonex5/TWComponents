@@ -7,7 +7,7 @@ using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 
-namespace DrawerComponent.Components.Drawer
+namespace TwComponents.Components.Drawer
 {
     [ContentProperty(nameof(DrawerContent))]
     public class TwDrawer : UserControl

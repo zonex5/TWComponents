@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace DrawerComponent.Components.WindowControls
+namespace TwComponents.Components.WindowControls
 {
     public partial class WindowControls : UserControl
     {

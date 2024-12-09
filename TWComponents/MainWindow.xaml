@@ -1,11 +1,11 @@
-﻿<Window x:Class="DrawerComponent.MainWindow"
+﻿<Window x:Class="TwComponents.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:drawer="clr-namespace:DrawerComponent.Components.Drawer"
-        xmlns:hamburger="clr-namespace:DrawerComponent.Components.Hamburger"
-        xmlns:notification="clr-namespace:DrawerComponent.Components.Notification"
+        xmlns:drawer="clr-namespace:TwComponents.Components.Drawer"
+        xmlns:hamburger="clr-namespace:TwComponents.Components.Hamburger"
+        xmlns:notification="clr-namespace:TwComponents.Components.Notification"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="705">
     <Grid>

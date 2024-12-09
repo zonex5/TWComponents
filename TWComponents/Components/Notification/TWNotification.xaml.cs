@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Timers;
 using System.Windows;
-using DrawerComponent.Helpers;
-using DrawerComponent.Models;
+using TwComponents.Helpers;
+using TwComponents.Models;
 
-namespace DrawerComponent.Components.Notification
+namespace TwComponents.Components.Notification
 {
     public partial class TwNotification
     {
