@@ -58,6 +58,7 @@
         <Page Include="Components\Hamburger\TwHamburger.xaml" />
         <Page Include="Components\Notification\TWNotification.xaml" />
         <Page Include="Components\Notification\TWNotificationBox.xaml" />
+        <Page Include="Components\TestWindow.xaml" />
         <Page Include="Components\WindowControls\WindowControls.xaml" />
         <Page Include="MainWindow.xaml">
             <Generator>MSBuild:Compile</Generator>
@@ -78,6 +79,9 @@
         </Compile>
         <Compile Include="Components\Notification\TWNotification.xaml.cs" />
         <Compile Include="Components\Notification\TWNotificationBox.xaml.cs" />
+        <Compile Include="Components\TestWindow.xaml.cs">
+          <DependentUpon>TestWindow.xaml</DependentUpon>
+        </Compile>
         <Compile Include="Components\WindowControls\WindowControls.xaml.cs">
           <DependentUpon>WindowControls.xaml</DependentUpon>
         </Compile>

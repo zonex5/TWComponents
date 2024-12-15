@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using TwComponents.Components;
 using TwComponents.Components.Dialog;
 
 namespace TwComponents
@@ -15,6 +16,11 @@ namespace TwComponents
                 //NotificationBox.WarningNotification("Huinea! Huiovaia huiota! Huini huiovogo huia, huianaia huianea huiovo.");
                 //NotificationBox.SusscessNotification("Huinea! Huiovaia huiota! Huini huiovogo huia, huianaia huianea huiovo.");
                 //NotificationBox.InfoNotification("Huinea! Huiovaia huiota! Huini huiovogo huia, huianaia huianea huiovo.");
+
+                TwHamburgerButton_OnClick();
+                
+                //TestWindow window = new TestWindow();
+                //window.ShowDialog();
             };
         }
 
@@ -25,7 +31,7 @@ namespace TwComponents
 
         private void TwHamburgerButton_OnClick()
         {
-            TwDialog.Show("Huinea! Huiovaia huiota! Huini huiovogo huia, huianaia huianea huiovo.", "qweqwe", MessageBoxButton.YesNoCancel,
+            TwDialog.Show("Huinea! Huiovaia huiota! Huini huiovogo huia, huianaia huianea huiovo. Huiovaia huiota! Huini huiovogo huia, huianaia huianea huiovo.", "qweqwe", MessageBoxButton.YesNoCancel,
                 MessageBoxImage.Question);
         }
     }

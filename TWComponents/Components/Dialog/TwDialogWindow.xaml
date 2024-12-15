@@ -1,33 +1,39 @@
-﻿<!-- TwDialogWindow.xaml -->
-<Window x:Class="TwComponents.Components.Dialog.TwDialogWindow"
+﻿<Window x:Class="TwComponents.Components.Dialog.TwDialogWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="{Binding Caption}"
         WindowStartupLocation="CenterScreen"
-        SizeToContent="WidthAndHeight"
-        ResizeMode="NoResize"
-        WindowStyle="SingleBorderWindow">
-    <Grid Margin="10">
+        Width="400" Height="200"
+        WindowStyle="None"
+        ResizeMode="CanResize"
+        AllowsTransparency="False"
+        ShowInTaskbar="False">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="25" CornerRadius="0" ResizeBorderThickness="0" />
+    </WindowChrome.WindowChrome>
+
+    <Grid Margin="20">
         <Grid.RowDefinitions>
-            <RowDefinition />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
-            <!-- Icon -->
-            <TextBlock Text="{Binding IconGlyph}"
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <TextBlock Text="&#xE706;"
                        FontFamily="Segoe MDL2 Assets"
                        FontSize="32"
                        Margin="0,0,10,0"
                        VerticalAlignment="Center"
                        Foreground="{Binding IconForeground}" />
-
-            <!-- Message text -->
-            <TextBlock Text="{Binding Message}" TextWrapping="Wrap" VerticalAlignment="Center" />
+            <TextBlock Text="Удаление заметки" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="18" />
         </StackPanel>
 
-        <!-- Buttons -->
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1">
+        <TextBlock Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14">
+            Huinea! Huiovaia huiota! Huini huiovogo huia, huianaia huianea huiovo. Huiovaia huiota! Huini huiovogo huia, huianaia huianea huiovo. Huiovaia huiota! Huini huiovogo huia, huianaia huianea huiovo.
+        </TextBlock>
+
+        <!--Buttons-->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
             <ItemsControl ItemsSource="{Binding Buttons}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
