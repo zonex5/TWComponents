@@ -18,9 +18,6 @@ namespace TwComponents
                 //NotificationBox.InfoNotification("Huinea! Huiovaia huiota! Huini huiovogo huia, huianaia huianea huiovo.");
 
                 TwHamburgerButton_OnClick();
-                
-                //TestWindow window = new TestWindow();
-                //window.ShowDialog();
             };
         }
 
@@ -31,8 +28,8 @@ namespace TwComponents
 
         private void TwHamburgerButton_OnClick()
         {
-            TwDialog.Show("Huinea! Huiovaia huiota! Huini huiovogo huia, huianaia huianea huiovo. Huiovaia huiota! Huini huiovogo huia, huianaia huianea huiovo.", "qweqwe", MessageBoxButton.YesNoCancel,
-                MessageBoxImage.Question);
+            TwDialog.Show("Huinea! Huiovaia huiota! Huini huiovogo huia, huianaia huianea huiovo. Huiovaia huiota! Huini huiovogo huia, huianaia huianea huiovo. pisea", "qweqwe", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            TwDialog.Show("Ты че, педрила, хочешь удалить что-то?", "Удаление заметки", MessageBoxButton.YesNo, MessageBoxImage.Information);
         }
     }
 }

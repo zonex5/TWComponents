@@ -2,16 +2,18 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         WindowStartupLocation="CenterScreen"
-        Width="400" Height="200"
+
+        MaxWidth="600"
+        MaxHeight="800"
         WindowStyle="None"
-        ResizeMode="CanResize"
+        ResizeMode="CanResize" SizeToContent="Height"
         AllowsTransparency="False"
         ShowInTaskbar="False">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="25" CornerRadius="0" ResizeBorderThickness="0" />
     </WindowChrome.WindowChrome>
 
-    <Grid Margin="20">
+    <Grid Margin="25">
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
             <RowDefinition Height="Auto" />
@@ -19,21 +21,21 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <TextBlock Text="&#xE706;"
+            <TextBlock Text="{Binding IconGlyph}"
+                       Foreground="{Binding IconForeground}"
                        FontFamily="Segoe MDL2 Assets"
                        FontSize="32"
                        Margin="0,0,10,0"
-                       VerticalAlignment="Center"
-                       Foreground="{Binding IconForeground}" />
-            <TextBlock Text="Удаление заметки" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="18" />
+                       VerticalAlignment="Center" />
+            <TextBlock VerticalAlignment="Center" FontWeight="SemiBold" FontSize="18" Text="{Binding Caption}" />
         </StackPanel>
 
-        <TextBlock Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14">
-            Huinea! Huiovaia huiota! Huini huiovogo huia, huianaia huianea huiovo. Huiovaia huiota! Huini huiovogo huia, huianaia huianea huiovo. Huiovaia huiota! Huini huiovogo huia, huianaia huianea huiovo.
-        </TextBlock>
+        <StackPanel Grid.Row="1" Margin=" 0 10 0 20">
+            <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Text="{Binding Message}" />
+        </StackPanel>
 
         <!--Buttons-->
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
             <ItemsControl ItemsSource="{Binding Buttons}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
