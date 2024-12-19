@@ -2,11 +2,11 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         WindowStartupLocation="CenterScreen"
-
         MaxWidth="600"
         MaxHeight="800"
         WindowStyle="None"
-        ResizeMode="CanResize" SizeToContent="Height"
+        ResizeMode="CanResize"
+        SizeToContent="Height"
         AllowsTransparency="False"
         ShowInTaskbar="False">
     <WindowChrome.WindowChrome>

@@ -1,5 +1,4 @@
-﻿// TwDialog.cs
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows;
 
@@ -7,8 +6,6 @@ namespace TwComponents.Components.Dialog
 {
     public static class TwDialog
     {
-        // Перегрузки метода Show аналогичные оригинальному MessageBox
-
         public static MessageBoxResult Show(string messageBoxText)
         {
             return ShowInternal(null, messageBoxText, "Сообщение", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK);

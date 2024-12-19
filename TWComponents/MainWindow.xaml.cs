@@ -9,6 +9,7 @@ namespace TwComponents
         public MainWindow()
         {
             InitializeComponent();
+            RemoveWindowRoundedCorners();
 
             Loaded += (a, args) =>
             {
