@@ -29,8 +29,8 @@ namespace TwComponents
 
         private void TwHamburgerButton_OnClick()
         {
-            TwDialog.Show("Huinea! Huiovaia huiota! Huini huiovogo huia, huianaia huianea huiovo. Huiovaia huiota! Huini huiovogo huia, huianaia huianea huiovo. pisea", "qweqwe", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
-            TwDialog.Show("Ты че, педрила, хочешь удалить что-то?", "Удаление заметки", MessageBoxButton.YesNo, MessageBoxImage.Information);
+            TwDialog.Show("Huinea! Huiovaia huiota! Huini huiovogo huia, huianaia huianea huiovo. Huiovaia huiota! Huini huiovogo huia, huianaia huianea huiovo. pisea", "qweqwe", MessageBoxButton.OK, MessageBoxImage.Question);
+            TwDialog.Show(this,"Ты че, педрила, хочешь удалить что-то?", "Удаление заметки", MessageBoxButton.YesNo, MessageBoxImage.Information);
         }
     }
 }

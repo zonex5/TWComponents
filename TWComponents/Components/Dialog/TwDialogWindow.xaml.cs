@@ -43,7 +43,6 @@ namespace TwComponents.Components.Dialog
             }
         }
 
-        // Новый свойство для символа иконки
         private string _iconGlyph;
 
         public string IconGlyph
@@ -56,7 +55,6 @@ namespace TwComponents.Components.Dialog
             }
         }
 
-        // Новое свойство для цвета иконки (опционально)
         private Brush _iconForeground = Brushes.Black;
 
         public Brush IconForeground

@@ -6,7 +6,7 @@
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
         <ProjectGuid>{08CF4C64-CF35-4741-87D5-17AE222E9737}</ProjectGuid>
-        <OutputType>Library</OutputType>
+        <OutputType>WinExe</OutputType>
         <RootNamespace>TwComponents</RootNamespace>
         <AssemblyName>TWComponents</AssemblyName>
         <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
@@ -47,11 +47,11 @@
         <Reference Include="PresentationFramework"/>
     </ItemGroup>
     <ItemGroup>
-	<!--  
+	<!--  -->
         <ApplicationDefinition Include="App.xaml">
             <Generator>MSBuild:Compile</Generator>
             <SubType>Designer</SubType>
-        </ApplicationDefinition> -->
+        </ApplicationDefinition>
         <Page Include="Components\Dialog\TwDialogWindow.xaml" /> 
 		
         <Page Include="Components\Hamburger\HambergerStyle.xaml" />
@@ -82,6 +82,8 @@
         <Compile Include="Components\WindowControls\WindowControls.xaml.cs">
           <DependentUpon>WindowControls.xaml</DependentUpon>
         </Compile>
+        <Compile Include="Converters\BoolToBackColorConverter.cs" />
+        <Compile Include="Converters\BoolToFontColorConverter.cs" />
         <Compile Include="Helpers\ColorHelper.cs" />
         <Compile Include="MainWindow.xaml.cs">
             <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -104,7 +106,7 @@
         </EmbeddedResource>
     </ItemGroup>
     <ItemGroup>
-        <None Include="App.config"/>
+        <None Include="App.config" />
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Components\Dialog\Icons\" />

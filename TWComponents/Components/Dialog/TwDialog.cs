@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Media;
 
 namespace TwComponents.Components.Dialog
 {
@@ -56,7 +56,6 @@ namespace TwComponents.Components.Dialog
             return ShowInternal(owner, messageBoxText, caption, button, icon, defaultResult);
         }
 
-        // Внутренний метод для отображения диалога
         private static MessageBoxResult ShowInternal(Window owner, string message, string caption, MessageBoxButton buttons, MessageBoxImage icon, MessageBoxResult defaultResult)
         {
             TwDialogWindow dialog = new TwDialogWindow
@@ -65,6 +64,7 @@ namespace TwComponents.Components.Dialog
                 Message = message,
                 Caption = caption,
                 IconGlyph = GetIconGlyph(icon),
+                IconForeground = GetIconColor(icon),
                 Buttons = GetButtons(buttons, defaultResult)
             };
 
@@ -78,21 +78,39 @@ namespace TwComponents.Components.Dialog
             return MessageBoxResult.None;
         }
 
-        // Метод для получения символа-иконки
         private static string GetIconGlyph(MessageBoxImage icon)
         {
             switch (icon)
             {
-                case MessageBoxImage.Asterisk:
-                    return "\uE946"; // Information icon
+                case MessageBoxImage.Information:
+                    return "\uE946";
                 case MessageBoxImage.Error:
-                    return "\uE783"; // Error icon
+                    return "\uEA39";
                 case MessageBoxImage.Exclamation:
-                    return "\uE7BA"; // Warning icon
+                    return "\uE7BA";
                 case MessageBoxImage.Question:
-                    return "\uE946"; // Question icon (можно выбрать другой код, если необходимо)
+                    return "\uE9CE";
+                case MessageBoxImage.None:
                 default:
                     return string.Empty;
+            }
+        }
+
+        private static Brush GetIconColor(MessageBoxImage icon)
+        {
+            switch (icon)
+            {
+                case MessageBoxImage.Information:
+                    return Brushes.MediumSeaGreen;
+                case MessageBoxImage.Error:
+                    return Brushes.Red;
+                case MessageBoxImage.Exclamation:
+                    return Brushes.Orange;
+                case MessageBoxImage.Question:
+                    return Brushes.CornflowerBlue;
+                case MessageBoxImage.None:
+                default:
+                    return Brushes.Black;
             }
         }
 

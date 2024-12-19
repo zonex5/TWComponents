@@ -1,14 +1,49 @@
 ﻿<Window x:Class="TwComponents.Components.Dialog.TwDialogWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:converters="clr-namespace:TwComponents.Converters"
         WindowStartupLocation="CenterScreen"
-        MaxWidth="600"
+        MaxWidth="500"
         MaxHeight="800"
         WindowStyle="None"
         ResizeMode="CanResize"
         SizeToContent="Height"
         AllowsTransparency="False"
         ShowInTaskbar="False">
+
+    <Window.Resources>
+        <converters:BoolToBackColorConverter x:Key="BoolToColorConverter" />
+        <converters:BoolToFontColorConverter x:Key="BoolToFontColorConverter" />
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                Padding="{TemplateBinding Padding}"
+                                CornerRadius="1"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" RecognizesAccessKey="True" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="LightGray" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0.1" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Padding" Value="0 6" />
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+    </Window.Resources>
+
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="25" CornerRadius="0" ResizeBorderThickness="0" />
     </WindowChrome.WindowChrome>
@@ -46,7 +81,9 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Button Content="{Binding Content}"
-                                Width="75"
+                                Background="{Binding IsDefault, Converter={StaticResource BoolToColorConverter}}"
+                                Foreground="{Binding IsDefault, Converter={StaticResource BoolToFontColorConverter}}"
+                                Width="100"
                                 Margin="5,0,0,0"
                                 IsDefault="{Binding IsDefault}"
                                 IsCancel="{Binding IsCancel}"
