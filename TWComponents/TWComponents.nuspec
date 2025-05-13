@@ -15,6 +15,5 @@
   <files>
     <file src="bin\Release\TWComponents.dll" target="lib\net48" />
     <file src="bin\Release\TWComponents.pdb" target="lib\net48" />
-    <file src="bin\Release\TWComponents.xml" target="lib\net48" />
   </files>
 </package>
