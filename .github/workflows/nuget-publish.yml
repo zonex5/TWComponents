@@ -1,0 +1,38 @@
+name: Build and Publish NuGet
+
+on:
+  push:
+    tags:
+      - 'v1.0'
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v2
+
+    - name: Restore packages
+      run: nuget restore TWComponents.sln
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v2
+
+    - name: Build project
+      run: msbuild TWComponents/TWComponents.csproj /p:Configuration=Release
+
+    - name: Pack project
+      run: |
+        nuget pack TWComponents/TWComponents.csproj -Properties Configuration=Release -OutputDirectory ./nupkg
+
+    - name: Push to GitHub Packages
+      run: nuget push ./nupkg/*.nupkg -Source "github" -ApiKey ${{ secrets.GITHUB_TOKEN }}
+      env:
+        NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Add GitHub source
+      run: nuget sources Add -Name "github" -Source "https://nuget.pkg.github.com/zonex5/index.json" -Username zonex5 -Password ${{ secrets.GITHUB_TOKEN }} -StorePasswordInClearText
