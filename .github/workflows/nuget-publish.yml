@@ -30,6 +30,9 @@ jobs:
       run: |
         nuget pack TWComponents/TWComponents.csproj -Properties Configuration=Release -OutputDirectory ./nupkg
 
+    - name: Add GitHub Packages source
+      run: nuget sources Add -Name "github" -Source "https://nuget.pkg.github.com/zonex5/index.json" -Username your-username -Password ${{ secrets.GITHUB_TOKEN }} -StorePasswordInClearText
+    
     - name: Push to GitHub Packages
       run: nuget push ./nupkg/*.nupkg -Source "github" -ApiKey ${{ secrets.GITHUB_TOKEN }}
       env:
