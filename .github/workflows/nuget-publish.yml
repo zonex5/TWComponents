@@ -32,7 +32,10 @@ jobs:
     - name: Add GitHub Packages source
       run: nuget sources Add -Name "github" -Source "https://nuget.pkg.github.com/zonex5/index.json" -Username zonex5 -Password ${{ secrets.GITHUB_TOKEN }} -StorePasswordInClearText
     
+    - name: list nupkg folder
+      run: dir .\nupkg
+      
     - name: Push to GitHub Packages
-      run: nuget push ./nupkg/*.nupkg -Source "github" -ApiKey ${{ secrets.GITHUB_TOKEN }}
+      run: nuget push .\nupkg\*.nupkg -Source "github" -ApiKey ${{ secrets.GITHUB_TOKEN }}
       env:
-        NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
