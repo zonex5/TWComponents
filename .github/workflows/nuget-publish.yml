@@ -26,8 +26,8 @@ jobs:
     - name: Build project
       run: msbuild TWComponents/TWComponents.csproj /p:Configuration=Release
 
-    - name: Pack project
-      run: msbuild TWComponents/TWComponents.csproj /p:Configuration=Release /t:pack /p:PackageOutputPath=./nupkg
+    - name: Pack project using .nuspec
+      run: nuget pack TWComponents/TWComponents.nuspec -OutputDirectory ./nupkg
 
     - name: Add GitHub Packages source
       run: nuget sources Add -Name "github" -Source "https://nuget.pkg.github.com/zonex5/index.json" -Username your-username -Password ${{ secrets.GITHUB_TOKEN }} -StorePasswordInClearText

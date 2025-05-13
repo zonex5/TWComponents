@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>TWComponents</id>
+    <version>1.0.0</version>
+    <authors>zonex5</authors>
+    <owners>zonex5</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Custom UI components for WPF applications</description>
+    <copyright>Copyright © 2025</copyright>
+    <tags>wpf components controls</tags>
+    <dependencies>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\TWComponents.dll" target="lib\net48" />
+    <file src="bin\Release\TWComponents.pdb" target="lib\net48" />
+    <file src="bin\Release\TWComponents.xml" target="lib\net48" />
+  </files>
+</package>
