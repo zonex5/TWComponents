@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWComponents", "TWComponents\TWComponents.csproj", "{08CF4C64-CF35-4741-87D5-17AE222E9737}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWComponents", "TWComponents.csproj", "{08CF4C64-CF35-4741-87D5-17AE222E9737}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
